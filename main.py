@@ -50,8 +50,13 @@ def listening_messages():
     bot.infinity_polling()
 
 if __name__ == '__main__':
+    bot.set_my_commands([
+        telebot.types.BotCommand('/start', 'Say hello'),
+        telebot.types.BotCommand('/send_video', 'Bot send you a video file'),
+        telebot.types.BotCommand('/send_image', 'Bot send you a image file'),
+    ])
     print('Starting the bot...')
     thread_bot = threading.Thread(name='Thread for my Bot', target=listening_messages)
     thread_bot.start()
     print('Bot is listening...')
-    bot.send_message(MY_CHAT_ID,'Hey bro !')
+    bot.send_message(CHANNEL_ID,'Hey bro !')
